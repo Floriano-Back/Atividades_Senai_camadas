@@ -20,6 +20,9 @@ const userService = {
     atualizarUsuario: async (user) =>{        
         const resultado = await userRepository.atualizar(user.name, user.email, user.password, user.id);
         return resultado;
+    },
+    hashPassword: async (password) =>{
+        const hashedPassword = await bcrypt.hash(password, 10)
     }
 };
 
