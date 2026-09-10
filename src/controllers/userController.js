@@ -42,6 +42,23 @@ const userController = {
                 data: error.message
                 });
         }
+    },
+    atualizar: async (req,res) => {
+        try{
+            const {id} = req.params;
+            const {name, email, password} = req.body;
+
+            const user = new User(name, email, password, id)
+            const result = await userService.atualizarUsuario(user);
+
+             return res.status(200).json({msg: "Usuario atualizado com sucesso"});
+
+        }catch(error){
+            console.error(error)
+            res.status(500).json({msg: "Erros ao atualizar usuario",
+                data: error.message
+            });
+        }
     }
 }
 

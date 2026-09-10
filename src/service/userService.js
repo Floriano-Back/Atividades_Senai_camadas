@@ -17,7 +17,7 @@ const userService = {
         const resultado = await userRepository.criar(user.name, user.email, user.password);
         return resultado;
     },
-    atualizarUsuario: async (user) =>{
+    atualizarUsuario: async (user) =>{        
         const resultado = await userRepository.atualizar(user.name, user.email, user.password, user.id);
         return resultado;
     }
