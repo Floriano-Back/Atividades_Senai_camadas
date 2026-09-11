@@ -15,11 +15,11 @@ const userService = {
         return resultado;
     }, 
     novoUsuario: async (user) =>{
-        const resultado = await userRepository.criar(user.name, user.email, user.password);
+        const resultado = await userRepository.criar(user.name, user.email, user.password, user.role);
         return resultado;
     },
     atualizarUsuario: async (user) =>{        
-        const resultado = await userRepository.atualizar(user.name, user.email, user.password, user.id);
+        const resultado = await userRepository.atualizar(user.name, user.email, user.password, user.role, user.id);
         return resultado;
     },
     hashPassword: async (password) =>{

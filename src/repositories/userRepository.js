@@ -16,14 +16,14 @@ const userRepository = {
         const [rows] = await pool.execute(sql, [userId]);
         return rows;
     },
-    criar: async (name,email,password) => {
-        const sql = "INSERT INTO users VALUES (null, ?, ?, ?);";
-        const [rows] = await pool.execute(sql, [name,email,password]);
+    criar: async (name,email,password, role) => {
+        const sql = "INSERT INTO users VALUES (null, ?, ?, ?, ?);";
+        const [rows] = await pool.execute(sql, [name,email,password,role]);
         return rows;
     },
-    atualizar: async (name,email,password,userId) => {
-        const sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?;";
-        const [rows] = await pool.execute(sql, [name,email,password, userId]);
+    atualizar: async (name,email,password,role,userId) => {
+        const sql = "UPDATE users SET name = ?, email = ?, password = ?, role = ? WHERE id = ?;";
+        const [rows] = await pool.execute(sql, [name,email,password,role,userId]);
         return rows;
     },
     selecionarEmail: async (email) =>{

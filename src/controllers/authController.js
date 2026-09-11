@@ -26,11 +26,12 @@ const authController = {
                 {
                     id: userExixsts[0].id,
                     email: userExixsts[0].email,
-                    name: userExixsts[0].name
+                    name: userExixsts[0].name,
+                    role: userExixsts[0].role
                 },
                 process.env.JWT_SECRET,
                 {
-                    expiresIn: '3m'
+                    expiresIn: '15m'
                 }
             )
 

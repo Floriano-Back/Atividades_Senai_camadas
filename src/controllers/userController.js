@@ -15,11 +15,11 @@ const userController = {
     },
     criar: async (req, res) => {
         try{
-            const {name, email, password} = req.body;
+            const {name, email, password, role} = req.body;
 
             const hashedPassword = await userService.hashPassword(password);
 
-            const user = new User(name, email, hashedPassword, null);
+            const user = new User(name, email, hashedPassword, role, null);
 
             const result = await userService.novoUsuario(user);
 
@@ -48,9 +48,11 @@ const userController = {
     atualizar: async (req,res) => {
         try{
             const {id} = req.params;
-            const {name, email, password} = req.body;
+            const {name, email, password, role} = req.body;
 
-            const user = new User(name, email, password, id)
+            const hashedPassword = await userService.hashPassword(password);
+
+            const user = new User(name, email, hashedPassword, role, id)
             const result = await userService.atualizarUsuario(user);
 
              return res.status(200).json({msg: "Usuario atualizado com sucesso"});
