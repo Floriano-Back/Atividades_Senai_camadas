@@ -1,4 +1,5 @@
 import userRepository from "../repositories/userRepository.js";
+import bcrypt from 'bcrypt';
 
 const userService = {
     recuperarUsuario:  async () =>{
@@ -22,7 +23,12 @@ const userService = {
         return resultado;
     },
     hashPassword: async (password) =>{
-        const hashedPassword = await bcrypt.hash(password, 10)
+        const hashedPassword = await bcrypt.hash(password, 10);
+        return hashedPassword
+    },
+    recuperarUsuarioPorEmail: async (email) =>{
+        const resultado = await userRepository.selecionarEmail(email);
+        return resultado;
     }
 };
 

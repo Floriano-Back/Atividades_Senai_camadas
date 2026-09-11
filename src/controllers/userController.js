@@ -17,9 +17,9 @@ const userController = {
         try{
             const {name, email, password} = req.body;
 
-            const hashedPassword = await userService.hashPassword();
+            const hashedPassword = await userService.hashPassword(password);
 
-            const user = new User(name, email, password, null);
+            const user = new User(name, email, hashedPassword, null);
 
             const result = await userService.novoUsuario(user);
 

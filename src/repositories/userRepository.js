@@ -26,6 +26,11 @@ const userRepository = {
         const [rows] = await pool.execute(sql, [name,email,password, userId]);
         return rows;
     },
+    selecionarEmail: async (email) =>{
+        const sql = "SELECT * FROM users WHERE email = ?;";
+        const [rows] = await pool.execute(sql, [email]);
+        return rows;
+    }
 }
 
 export default userRepository;
